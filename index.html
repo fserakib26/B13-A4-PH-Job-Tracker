@@ -33,9 +33,9 @@
         <div class="mb-16">        
             <h2 class="font-bold my-10">Available Jobs</h2>
             <div class="flex gap-8">            
-                <button class="bg-blue-500 text-white p-5 rounded-2xl w-[10%]">All</button>
-                <button class="bg-white p-5 rounded-2xl w-[10%] border-2 border-gray-200">Interview</button>
-                <button class="bg-white p-5 rounded-2xl w-[10%] border-2 border-gray-200">Rejected</button>            
+                <button onclick="toggleStyle('all-filter-btn')" id="all-filter-btn" class="bg-blue-500 text-white p-5 rounded-2xl w-[10%] border-2 border-gray-200">All</button>
+                <button onclick="toggleStyle('interview-filter-btn')" id="interview-filter-btn"class="bg-white p-5 rounded-2xl w-[10%] border-2 border-gray-200">Interview</button>
+                <button onclick="toggleStyle('rejected-filter-btn')" id="rejected-filter-btn"class="bg-white p-5 rounded-2xl w-[10%] border-2 border-gray-200">Rejected</button>            
             </div>
         </div>
 
@@ -44,22 +44,22 @@
             <div class="job border-2 border-gray-200 flex justify-between bg-gray-100 p-10 rounded-2xl">
                 <div class="space-y-6">                
                     <div>
-                        <h2 class="font-bold">Mobile First Corp</h2>
-                        <p class="text-gray-500">React Native Developer</p>
+                        <h2 class="job-title font-bold">Mobile First Corp</h2>
+                        <p class="job-description text-gray-500">React Native Developer</p>
                     </div>
                     <div>
-                        <span class="text-gray-500">Remote • Full-time • $130,000 - $175,000</span>
+                        <span class="jobtype text-gray-500">Remote • Full-time • $130,000 - $175,000</span>
                     </div>
                     <div>
-                        <span class="bg-gray-200 p-1.5 rounded font-bold">NOT APPLIED</span>                       
+                        <span class="status bg-gray-200 p-1.5 rounded font-bold">NOT APPLIED</span>                       
                     </div>
                     
                     <div>
-                        <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                        <p class="notes">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     </div>
                     <div>
-                        <button class="text-green-400 p-1.5 rounded font-bold border-2 border-green-400">INTERVIEW</button>
-                        <button class="text-red-400 p-1.5 rounded font-bold border-2 border-red-400">REJECTED</button>
+                        <button class="interview-btn text-green-400 p-1.5 rounded font-bold border-2 border-green-400">INTERVIEW</button>
+                        <button class=" rejected-btn text-red-400 p-1.5 rounded font-bold border-2 border-red-400">REJECTED</button>
                     </div>
                 </div>
 
