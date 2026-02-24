@@ -42,6 +42,14 @@ function toggleStyle(id){
     const selected = document.getElementById(id)
     selected.classList.remove('bg-white', 'text-black')
     selected.classList.add('bg-blue-500', 'text-white')
+
+    if (id == 'interview-filter-btn') {
+        allJobs.classList.add('hidden');
+        filterSection.classList.remove('hidden');
+    } else if(id == all-filter-btn ){
+        allJobs.classList.remove('hidden');
+        filterSection.classList.add('hidden')
+    }
 }
 
 
@@ -65,6 +73,7 @@ mainContainer.addEventListener('click', function(event){
         }
 
         const jobExist = interviewList.find(item=> item.jobTitle == jobInfo.jobTitle )
+        parentNode.querySelector('.status').innerText = 'Interview'
 
         if (!jobExist) {
             interviewList.push(jobInfo);
@@ -107,5 +116,6 @@ function renderInterview () {
                     <button class="bg-gray-400 rounded-full"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
         `
+        filterSection.appendChild(div)
     }
 }
