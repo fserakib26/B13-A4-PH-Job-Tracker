@@ -12,10 +12,12 @@ let interviewFilterBtn = document.getElementById('interview-filter-btn');
 let rejectedFilterBtn = document.getElementById('rejected-filter-btn');
 
 
+
 const allJobs = document.getElementById('alljobs');
 // console.log(allJobs.children.length);
 const mainContainer = document.querySelector('main')
 // console.log(mainContainer)
+const filterSection = document.getElementById('filtered-section')
 
 
 
@@ -44,6 +46,66 @@ function toggleStyle(id){
 
 
 mainContainer.addEventListener('click', function(event){
-    const parentNode = event.target.parentNode.parentNode;
+    if (event.target.classList.contains('interview-btn')) {
+
+        const parentNode = event.target.parentNode.parentNode;
+        const jobTitle = parentNode.querySelector('.job-title').innerText
+        const jobDescription = parentNode.querySelector('.job-description').innerText
+        const jobType = parentNode.querySelector('.jobtype').innerText
+        const status = parentNode.querySelector('.status').innerText
+        const notes = parentNode.querySelector('.notes').innerText
+
+
+        const jobInfo = {
+            jobTitle,
+            jobDescription,
+            jobType,
+            status,
+            notes
+        }
+
+        const jobExist = interviewList.find(item=> item.jobTitle == jobInfo.jobTitle )
+
+        if (!jobExist) {
+            interviewList.push(jobInfo);
+        }
+        renderInterview ()
     
+        
+    }
 })
+
+function renderInterview () {
+    filterSection.innerHTML = ''
+
+    for(let interview of interviewList ){
+        let div = document.createElement('div')
+        div.className = 'job border-2 border-gray-200 flex justify-between bg-gray-100 p-10 rounded-2xl'
+        div.innerHTML=`
+             <div class="space-y-6">                
+                    <div>
+                        <h2 class="job-title font-bold">Mobile First Corp</h2>
+                        <p class="job-description text-gray-500">React Native Developer</p>
+                    </div>
+                    <div>
+                        <span class="jobtype text-gray-500">Remote • Full-time • $130,000 - $175,000</span>
+                    </div>
+                    <div>
+                        <span class="status bg-gray-200 p-1.5 rounded font-bold">NOT APPLIED</span>                       
+                    </div>
+                    
+                    <div>
+                        <p class="notes">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    </div>
+                    <div>
+                        <button class="interview-btn text-green-400 p-1.5 rounded font-bold border-2 border-green-400">INTERVIEW</button>
+                        <button class=" rejected-btn text-red-400 p-1.5 rounded font-bold border-2 border-red-400">REJECTED</button>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="bg-gray-400 rounded-full"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+        `
+    }
+}
